@@ -7,6 +7,8 @@ import io
 model1 = "openai-community/gpt2"
 model2 = "mistralai/Mistral-7B-Instruct-v0.1"
 
+huggingface_token = st.secrets["HUGGINGFACE_TOKEN"]
+
 st.set_page_config(page_title="Dev-Genie", layout="centered")
 st.title("🤖 DEV-GENIE!!")
 st.subheader("Your AI assistant powered by Hugging Face models!")
@@ -51,7 +53,7 @@ if user_input:
     st.session_state.chat_history.append({"role": "user", "content": user_input})
 
     with st.spinner("Genie is thinking..."):
-        ai_response = huggingface_helper.generate_response(user_input, selected_bot)
+        ai_response = huggingface_helper.generate_response(user_input, selected_bot, huggingface_token)
 
     if not ai_response:
         ai_response = "Hmm, I couldn't quite get that. Can you rephrase it for me?"

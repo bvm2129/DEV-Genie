@@ -1,14 +1,9 @@
 # huggingface_helper.py
 from huggingface_hub import InferenceClient, login
-from keys import huggingface_token
-
-# Login once
-login(token=huggingface_token)
-
 # Cache clients per model
 client_cache = {}
 
-def generate_response(prompt, model):
+def generate_response(prompt, model, huggingface_token):
     # If not cached, create a new InferenceClient
     if model not in client_cache:
         client_cache[model] = InferenceClient(model=model, token=huggingface_token)
