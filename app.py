@@ -4,8 +4,14 @@ import huggingface_helper
 import io
 
 # Model options
-model1 = "openai-community/gpt2"
-model2 = "mistralai/Mistral-7B-Instruct-v0.1"
+m1 = "openai-community/gpt2"
+m2 = "mistralai/Mistral-7B-Instruct-v0.1"
+m3 = "mistralai/Mistral-7B-Instruct-v0.2"
+m4 = "mistralai/Mistral-7B-Instruct-v0.3"
+m5 = "HuggingFaceH4/zephyr-7b-alpha"
+m6 = "HuggingFaceH4/zephyr-7b-beta"
+m7 = "Qwen/Qwen3-Coder-30B-A3B-Instruct"
+
 
 huggingface_token = st.secrets["HUGGINGFACE_TOKEN"]
 
@@ -14,7 +20,7 @@ st.title("🤖 DEV-GENIE!!")
 st.subheader("Your AI assistant powered by Hugging Face models!")
 
 # Sidebar – Model selection
-selected_bot = st.sidebar.selectbox("Select a bot", (model1, model2))
+selected_bot = st.sidebar.selectbox("Select a bot", (m1, m2, m3, m4, m5, m6, m7))
 
 # Sidebar – Download chat
 if "chat_history" in st.session_state and st.sidebar.button("📥 Download Chat as .txt"):
